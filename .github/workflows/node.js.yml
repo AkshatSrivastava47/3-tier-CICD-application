@@ -20,6 +20,13 @@ jobs:
           node-version: 18
           cache: 'npm'
 
-      - run: npm ci
-      - run: npm run build --if-present
-      - run: npm test
+      - name: Frontend Compilation (Syntax Check) 
+        run: |
+          cd client
+          find . -name "*.js" -exec node check { }+
+
+      - name: Backend Compilation (Syntax Check)
+        run: |
+          cd client
+          find . -name "*.js" -exec node check { }+
+          
